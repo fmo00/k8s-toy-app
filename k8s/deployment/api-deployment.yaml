@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-web
+  namespace: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-web
+  template:
+    metadata:
+      labels:
+        app: api-web
+    spec:
+      containers:
+        - name: api-web
+          image: fmo00/api-web:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: 100m
